@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link href="/stylesheet.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Include _menu.html -->
+<!--<th:block th:include="index"></th:block>-->
+<div class="wrapper">
+    <div class="sidebar"
+         xmlns:th="http://www.thymeleaf.org"
+         style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
+        <h1>Library Manager</h1>
+        <a th:href="@{/}">Home</a>
+        | &nbsp;
+        <a th:href="@{/user/}">User Manager</a>
+        | &nbsp;
+        <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
+    </div>
+</div>
+
+
+<!-- /login?error=true -->
+<div th:if="${#request.getParameter('error') == 'true'}"
+     style="color:red;margin:10px 0px;">
+    Login Failed!!!<br />
+    Reason :
+    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                Static summary
+         </span>
+
+</div>
+
+
+<form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+    <div align="center">
+        <h1>Login</h1>
+        <br><br>
+        <h3>Enter user name and password:</h3>
+        <br>
+    <table class="ptable">
+        <tr>
+            <td>User:</td>
+            <td><input type='text' name='name' value=''></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type='password' name='password' /></td>
+        </tr>
+        <tr>
+            <td>Remember Me:</td>
+            <td><input type='checkbox' name='remember-me' /></td>
+        </tr>
+        <tr>
+            <td><input name="submit" type="submit" value="login" /></td>
+        </tr>
+    </table>
+    </div>
+</form>
+
+<br>
+
+</body>
+
+</html>

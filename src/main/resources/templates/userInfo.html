@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Info</title>
+    <link href="/stylesheet.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="wrapper">
+    <div class="sidebar"
+         xmlns:th="http://www.thymeleaf.org"
+         style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
+        <h1>Library Manager</h1>
+        <a th:href="@{/}">Home</a>
+        | &nbsp;
+        <a th:href="@{/product/}">Book List</a>
+        | &nbsp;
+        <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
+    </div>
+</div>
+<div align="center">
+    <br><br><br>
+    <h2>User Info Page</h2>
+    <br>
+    <h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
+    <br/><br/>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

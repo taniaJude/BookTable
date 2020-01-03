@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>User Manager</title>
+    <link href="/stylesheet.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="wrapper">
+    <div class="sidebar"
+         xmlns:th="http://www.thymeleaf.org"
+         style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
+        <h1>Library Manager</h1>
+        <a th:href="@{/}">Home</a>
+        | &nbsp;
+        <a th:href="@{/product/}">Book List</a>
+        | &nbsp;
+        <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
+    </div>
+</div>
+<br><br><br>
+<div align="center">
+    <h1>User List</h1>
+    <br/><br/>
+    <table class="ptable">
+        <thead>
+        <tr>
+            <th>User Login</th>
+            <th>Admin Login</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><a th:href="@{'/user/userInfo'}">User</a></td>
+            <td><a th:href="@{'/user/admin'}">Admin</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
