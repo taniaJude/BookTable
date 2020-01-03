@@ -20,43 +20,44 @@
     </div>
 </div>
 </div>
-<div id="admin" th:if="${role1 == 'ROLE_ADMIN'}" th:with="errorMsg='unknown'">
+
+<div id="admin" th:if="${isAdmin}">
     <div align="center">
-    <br><br><br>
-    <h1>Book List</h1>
-    <br><br>
-        <a href="/product/new">Create New Book</a>
-    <br/><br/>
-    <table class="ptable">
-        <thead>
-        <tr>
-            <th>Product ID</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Genre</th>
-            <th>Price</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="product : ${listProducts}">
-            <td th:text="${product.id}">Product ID</td>
-            <td th:text="${product.title}">Title</td>
-            <td th:text="${product.author}">Author</td>
-            <td th:text="${product.genre}">Genre</td>
-            <td th:text="${product.price}">Price</td>
-            <td>
-                <a th:href="@{'/product/edit/' + ${product.id}}">Edit</a>
-                <a th:href="@{'/product/delete/' + ${product.id}}">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+        <br><br><br>
+        <h1>Book List</h1>
+         <br><br>
+              <a href="/product/new">Create New Book</a>
+          <br/><br/>
+        <table class="ptable">
+            <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${listProducts}">
+                <td th:text="${product.id}">Product ID</td>
+                <td th:text="${product.title}">Title</td>
+                <td th:text="${product.author}">Author</td>
+                <td th:text="${product.genre}">Genre</td>
+                <td th:text="${product.price}">Price</td>
+                <td>
+                    <a th:href="@{'/product/edit/' + ${product.id}}">Edit</a>
+                    <a th:href="@{'/product/delete/' + ${product.id}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<!--
-<div id="user" th:unless="${role eq 'ROLE_ADMIN'}">
+
+<div id="user" th:unless="${isAdmin}">
 <div align="center">
 <br><br><br>
 <h1>Book List</h1>
@@ -82,7 +83,7 @@
     </tbody>
 </table>
 </div>
-</div>-->
+</div>
 </html>
 
 

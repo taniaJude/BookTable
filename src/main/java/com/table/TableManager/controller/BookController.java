@@ -20,6 +20,7 @@ import java.util.Optional;
 @RequestMapping("/product")
 public class BookController
 {
+    private static final String ADMIN_ROLE="ROLE_ADMIN";
     @Autowired
     private ProductService service;
     //handler methods
@@ -38,7 +39,7 @@ public class BookController
         model.addAttribute("listProducts",listProducts);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         authentication.getAuthorities();
-        model.addAttribute("role1",authentication.getAuthorities().toArray()[0]);
+        model.addAttribute("isAdmin",authentication.getAuthorities().toArray()[0].toString().equals(ADMIN_ROLE));
         return "index_product";
     }
     @RequestMapping("/new")
